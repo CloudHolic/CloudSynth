@@ -1,8 +1,11 @@
-﻿using System;
-
-namespace CloudSynth.Core
+﻿namespace CloudSynth.Core
 {
-    public class RegionNames
+    public static class RegionNames
     {
+        public const string GraphRegion = "GraphRegion";
+
+        public const string FilterRegion = "FilterRegion";
+
+        public const string PianoRegion = "PianoRegion";
     }
 }

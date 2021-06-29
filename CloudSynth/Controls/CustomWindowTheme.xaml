@@ -181,6 +181,11 @@
                                 </StackPanel>
                             </Grid>
 
+                            <AdornerDecorator Grid.Row="1" KeyboardNavigation.IsTabStop="False">
+                                <ContentPresenter x:Name="MainContentPresenter" Content="{TemplateBinding Content}"
+                                                  KeyboardNavigation.TabNavigation="Cycle"/>
+                            </AdornerDecorator>
+
                             <ResizeGrip Grid.Row="1" x:Name="ResizeGrip"
                                         HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                         IsTabStop="False" Visibility="Hidden"

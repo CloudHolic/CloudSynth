@@ -4,6 +4,7 @@
                        xmlns:prism="http://prismlibrary.com/"
                        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
                        xmlns:controls="clr-namespace:CloudSynth.Controls"
+                       xmlns:common="clr-namespace:CloudSynth.Core;assembly=CloudSynth.Core"
                        Style="{StaticResource CustomWindowStyle}"
                        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                        Background="{DynamicResource MaterialDesignPaper}"
@@ -23,11 +24,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ContentControl Grid.Column="0" prism:RegionManager.RegionName="GraphRegion"/>
+            <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static common:RegionNames.GraphRegion}"/>
 
-            <ContentControl Grid.Column="1" prism:RegionManager.RegionName="FilterRegion"/>
+            <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static common:RegionNames.FilterRegion}"/>
         </Grid>
 
-        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="PianoRegion"/>
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static common:RegionNames.PianoRegion}"/>
     </Grid>
 </controls:CustomWindow>

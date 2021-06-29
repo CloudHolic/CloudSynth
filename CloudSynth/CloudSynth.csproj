@@ -18,6 +18,14 @@
 		<PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\CloudSynth.Core\CloudSynth.Core.csproj" />
+	  <ProjectReference Include="..\Modules\CloudSynth.Filter\CloudSynth.Filter.csproj" />
+	  <ProjectReference Include="..\Modules\CloudSynth.Graph\CloudSynth.Graph.csproj" />
+	  <ProjectReference Include="..\Modules\CloudSynth.Piano\CloudSynth.Piano.csproj" />
+	  <ProjectReference Include="..\Services\CloudSynth.Db\CloudSynth.Db.csproj" />
+	  <ProjectReference Include="..\Services\CloudSynth.Sound\CloudSynth.Sound.csproj" />
+	</ItemGroup>
+	<ItemGroup>
 		<Resource Include="Assets\Icon.png">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</Resource>
