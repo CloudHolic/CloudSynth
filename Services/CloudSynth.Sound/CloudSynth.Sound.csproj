@@ -1,13 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net5.0-windows</TargetFramework>
-		<UseWPF>true</UseWPF>
+		<TargetFramework>net5.0</TargetFramework>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-		<AssemblyName>CloudSynth.Graph</AssemblyName>
+		<AssemblyName>CloudSynth.Sound</AssemblyName>
 	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
-	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="xcopy /Y &quot;$(OutDir)*$(TargetExt)&quot; &quot;$(SolutionDir)bin\&quot;" />
 	</Target>
