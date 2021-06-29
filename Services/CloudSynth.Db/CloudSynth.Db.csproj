@@ -9,6 +9,7 @@
 	</Target>
 	<ItemGroup>
 	  <PackageReference Include="Prism.Core" Version="8.1.97" />
+	  <PackageReference Include="System.Data.SQLite" Version="1.0.114.4" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\CloudSynth.Core\CloudSynth.Core.csproj" />

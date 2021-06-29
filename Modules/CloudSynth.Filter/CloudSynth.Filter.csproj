@@ -6,6 +6,7 @@
 		<AssemblyName>CloudSynth.Filter</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
 		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
 	</ItemGroup>
 	<ItemGroup>
