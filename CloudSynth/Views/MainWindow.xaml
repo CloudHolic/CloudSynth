@@ -10,7 +10,7 @@
                        FontFamily="{material:MaterialDesignFont}"
                        prism:ViewModelLocator.AutoWireViewModel="True"
                        Title="{Binding Title}" Height="600" Width="900"
-                       WindowStartupLocation="CenterScreen">
+                       Icon="../Assets/Icon.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <ContentControl prism:RegionManager.RegionName="ContentRegion"/>
     </Grid>
