@@ -12,6 +12,22 @@
                        Title="{Binding Title}" Height="600" Width="900"
                        Icon="../Assets/Icon.png" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ContentControl Grid.Column="0" prism:RegionManager.RegionName="GraphRegion"/>
+
+            <ContentControl Grid.Column="1" prism:RegionManager.RegionName="FilterRegion"/>
+        </Grid>
+
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="PianoRegion"/>
     </Grid>
 </controls:CustomWindow>

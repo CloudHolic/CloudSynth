@@ -1,11 +1,9 @@
-﻿using CloudSynth.Controls;
-
-namespace CloudSynth.Views
+﻿namespace CloudSynth.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : CustomWindow
+    public partial class MainWindow
     {
         public MainWindow()
         {

@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSynth", "CloudSynth\CloudSynth.csproj", "{D6A701AF-30C8-4E18-A31C-4B76A96C782F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudSynth", "CloudSynth\CloudSynth.csproj", "{D6A701AF-30C8-4E18-A31C-4B76A96C782F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{AAFB6088-19BB-4B6C-A7DD-45F9AC438C89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSynth.Graph", "Modules\CloudSynth.Graph\CloudSynth.Graph.csproj", "{7FA826E6-AB02-46A1-8AD8-9F56CEF852A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSynth.Filter", "Modules\CloudSynth.Filter\CloudSynth.Filter.csproj", "{1FC4D83C-BFB1-4774-A214-9F15E8738366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSynth.Piano", "Modules\CloudSynth.Piano\CloudSynth.Piano.csproj", "{454FEC23-A278-490A-8EBC-A2885C83DA01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,26 @@ Global
 		{D6A701AF-30C8-4E18-A31C-4B76A96C782F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6A701AF-30C8-4E18-A31C-4B76A96C782F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6A701AF-30C8-4E18-A31C-4B76A96C782F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA826E6-AB02-46A1-8AD8-9F56CEF852A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA826E6-AB02-46A1-8AD8-9F56CEF852A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA826E6-AB02-46A1-8AD8-9F56CEF852A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA826E6-AB02-46A1-8AD8-9F56CEF852A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC4D83C-BFB1-4774-A214-9F15E8738366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC4D83C-BFB1-4774-A214-9F15E8738366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC4D83C-BFB1-4774-A214-9F15E8738366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC4D83C-BFB1-4774-A214-9F15E8738366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{454FEC23-A278-490A-8EBC-A2885C83DA01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{454FEC23-A278-490A-8EBC-A2885C83DA01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{454FEC23-A278-490A-8EBC-A2885C83DA01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{454FEC23-A278-490A-8EBC-A2885C83DA01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7FA826E6-AB02-46A1-8AD8-9F56CEF852A9} = {AAFB6088-19BB-4B6C-A7DD-45F9AC438C89}
+		{1FC4D83C-BFB1-4774-A214-9F15E8738366} = {AAFB6088-19BB-4B6C-A7DD-45F9AC438C89}
+		{454FEC23-A278-490A-8EBC-A2885C83DA01} = {AAFB6088-19BB-4B6C-A7DD-45F9AC438C89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3E0486F-B439-452E-8696-2E7DFC934E23}

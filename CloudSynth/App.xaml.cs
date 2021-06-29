@@ -1,6 +1,6 @@
 ﻿using CloudSynth.Views;
 using Prism.Ioc;
-using System.Windows;
+using CloudSynth.Controls;
 
 namespace CloudSynth
 {
@@ -9,7 +9,7 @@ namespace CloudSynth
     /// </summary>
     public partial class App
     {
-        protected override Window CreateShell()
+        protected override CustomWindow CreateShell()
         {
             return Container.Resolve<MainWindow>();
         }
