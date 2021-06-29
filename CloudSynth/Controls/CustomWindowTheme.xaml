@@ -78,7 +78,7 @@
     </Style>
 
 
-    <Style TargetType="{x:Type local:CustomWindow}">
+    <Style x:Key="CustomWindowStyle" TargetType="{x:Type local:CustomWindow}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
 
         <Setter Property="Background" Value="#FFF1F1F1"/>
@@ -181,10 +181,6 @@
                                 </StackPanel>
                             </Grid>
 
-                            <AdornerDecorator Grid.Row="1" KeyboardNavigation.IsTabStop="False">
-
-                            </AdornerDecorator>
-
                             <ResizeGrip Grid.Row="1" x:Name="ResizeGrip"
                                         HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                         IsTabStop="False" Visibility="Hidden"
@@ -193,11 +189,44 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsActive" Value="False">
+                            <Setter Property="BorderBrush" Value="#FF6F7785"/>
+                        </Trigger>
 
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Collapsed"/>
+
+                            <Setter TargetName="Restore" Property="Visibility" Value="Visible"/>
+
+                            <Setter TargetName="LayoutRoot" Property="Margin" Value="7"/>
+                        </Trigger>
+
+                        <Trigger Property="WindowState" Value="Normal">
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Visible"/>
+
+                            <Setter TargetName="Restore" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger Property="ResizeMode" Value="NoResize">
+                            <Setter TargetName="Minimize" Property="Visibility" Value="Collapsed"/>
+
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Collapsed"/>
+
+                            <Setter TargetName="Restore" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ResizeMode" Value="CanResizeWithGrip"/>
+
+                                <Condition Property="WindowState" Value="Normal"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible"/>
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>
