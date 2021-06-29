@@ -17,20 +17,25 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Styles for piano tiles -->
             <Style x:Key="WhiteKey" TargetType="{x:Type Rectangle}">
                 <Setter Property="RadiusX" Value="5"/>
+
                 <Setter Property="RadiusY" Value="5"/>
+
                 <Setter Property="Fill" Value="Ivory"/>
+
                 <Setter Property="Stroke" Value="Black"/>
+
                 <Setter Property="StrokeThickness" Value="1"/>
             </Style>
 
             <Style x:Key="BlackKey" TargetType="{x:Type Rectangle}">
                 <Setter Property="Fill" Value="Black"/>
+
                 <Setter Property="VerticalAlignment" Value="Top"/>
-                <Setter Property="HorizontalAlignment" Value="{TemplateBinding HorizontalAlignment}"/>
+
                 <Setter Property="Width" Value="20"/>
+
                 <Setter Property="Height" Value="120"/>
             </Style>
         </ResourceDictionary>

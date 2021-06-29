@@ -17,12 +17,12 @@ namespace CloudSynth.Controls
             CommandBindings.Add(new CommandBinding(SystemCommands.ShowSystemMenuCommand, ShowSystemMenu));
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-            if(e.ButtonState == MouseButtonState.Pressed)
-                DragMove();
-        }
+        //protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        //{
+        //    base.OnMouseLeftButtonDown(e);
+        //    if(e.ButtonState == MouseButtonState.Pressed)
+        //        DragMove();
+        //}
 
         protected override void OnContentRendered(EventArgs e)
         {
