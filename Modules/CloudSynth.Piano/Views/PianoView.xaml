@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
+             mc:Ignorable="d" d:DesignHeight="200" d:DesignWidth="900"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{material:MaterialDesignFont}"
@@ -20,6 +20,45 @@
     </UserControl.Resources>
 
     <Grid>
-        <TextBlock Text="{Binding Message}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.Column="0" x:Name="C" RadiusX="5" RadiusY="5" Fill="Ivory" StrokeThickness="1" Stroke="Black"/>
+        <Rectangle Grid.Column="0" x:Name="CSharp1" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Right"/>
+
+        <Rectangle Grid.Column="1" x:Name="D" RadiusX="5" RadiusY="5" Fill="Ivory" StrokeThickness="1" Stroke="Black"/>
+        <Rectangle Grid.Column="1" x:Name="CSharp2" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Left"/>
+        <Rectangle Grid.Column="1" x:Name="DSharp1" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Right"/>
+
+        <Rectangle Grid.Column="2" x:Name="E" RadiusX="5" RadiusY="5" Fill="Ivory" StrokeThickness="1" Stroke="Black"/>
+        <Rectangle Grid.Column="2" x:Name="DSharp2" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Left"/>
+
+        <Rectangle Grid.Column="3" x:Name="F" RadiusX="5" RadiusY="5" Fill="Ivory" StrokeThickness="1" Stroke="Black"/>
+        <Rectangle Grid.Column="3" x:Name="FSharp1" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Right"/>
+
+        <Rectangle Grid.Column="4" x:Name="G" RadiusX="5" RadiusY="5" Fill="Ivory" StrokeThickness="1" Stroke="Black"/>
+        <Rectangle Grid.Column="4" x:Name="FSharp2" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Left"/>
+        <Rectangle Grid.Column="4" x:Name="GSharp1" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Right"/>
+
+        <Rectangle Grid.Column="5" x:Name="A" RadiusX="5" RadiusY="5" Fill="Ivory" StrokeThickness="1" Stroke="Black"/>
+        <Rectangle Grid.Column="5" x:Name="GSharp2" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Left"/>
+        <Rectangle Grid.Column="5" x:Name="ASharp1" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Right"/>
+
+        <Rectangle Grid.Column="6" x:Name="B" RadiusX="5" RadiusY="5" Fill="Ivory" StrokeThickness="1" Stroke="Black"/>
+        <Rectangle Grid.Column="6" x:Name="ASharp2" Fill="Black" Height="120" VerticalAlignment="Top" Width="20" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>
