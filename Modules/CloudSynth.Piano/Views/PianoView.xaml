@@ -27,7 +27,6 @@
         </Grid.ColumnDefinitions>
 
         <controls:PianoControl Grid.Column="0" PlayCommand="{Binding PlayCommand}" StopCommand="{Binding StopCommand}"/>
-
-        <controls:PianoControl Grid.Column="1"/>
+        <controls:PianoControl Grid.Column="1" PlayCommand="{Binding PlayCommand}" StopCommand="{Binding StopCommand}"/>
     </Grid>
 </UserControl>

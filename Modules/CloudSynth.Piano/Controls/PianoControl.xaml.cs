@@ -17,16 +17,22 @@ namespace CloudSynth.Piano.Controls
         private EventHandler _canExecutePlayChanged, _canExecuteStopChanged;
         protected override bool IsEnabledCore => base.IsEnabledCore && (_canExecutePlay || _canExecuteStop);
 
+        #region Dependency properties
+        
         public static readonly DependencyProperty PlayCommandProperty = DependencyProperty.Register("PlayCommand",
             typeof(ICommand), typeof(PianoControl), new PropertyMetadata(OnCommandChanged));
 
         public static readonly DependencyProperty StopCommandProperty = DependencyProperty.Register("StopCommand",
             typeof(ICommand), typeof(PianoControl), new PropertyMetadata(OnCommandChanged));
 
+        #endregion
+
         public PianoControl()
         {
             InitializeComponent();
         }
+
+        #region Properties
 
         public ICommand PlayCommand
         {
@@ -39,6 +45,10 @@ namespace CloudSynth.Piano.Controls
             get => (ICommand) GetValue(StopCommandProperty);
             set => SetValue(StopCommandProperty, value);
         }
+
+        #endregion
+
+        #region Method about command bindings
 
         public static void OnCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -72,12 +82,16 @@ namespace CloudSynth.Piano.Controls
                     command.CanExecuteChanged += _canExecuteStopChanged;
             }
         }
-
+        
         private void RemoveCommand(DependencyProperty property, ICommand command)
         {
             EventHandler handler = property == PlayCommandProperty ? CanExecutePlayChanged : CanExecuteStopChanged;
             command.CanExecuteChanged -= handler;
         }
+
+        #endregion
+
+        #region CanExecuteChanged event handlers
 
         // Should CanExecuteChanged event handlers be splitted? Idk...
         private void CanExecutePlayChanged(object sender, EventArgs e)
@@ -95,6 +109,8 @@ namespace CloudSynth.Piano.Controls
 
             CoerceValue(IsEnabledProperty);
         }
+
+        #endregion
 
         #region White key event handlers
 

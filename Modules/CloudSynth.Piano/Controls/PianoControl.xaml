@@ -34,7 +34,8 @@
             <Style x:Key="BlackKey" TargetType="{x:Type Rectangle}">
                 <Setter Property="Fill" Value="Black"/>
                 <Setter Property="VerticalAlignment" Value="Top"/>
-                <Setter Property="Width" Value="20"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Width" Value="40"/>
                 <Setter Property="Height" Value="120"/>
 
                 <EventSetter Event="MouseLeftButtonDown" Handler="OnBlackKeyMouseLeftButtonDown"/>
@@ -61,88 +62,59 @@
                 <x:Static Member="model:Tonic.C"/>
             </Rectangle.Tag>
         </Rectangle>
-        <Rectangle Grid.Column="0" HorizontalAlignment="Right" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.CSharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-
         <Rectangle Grid.Column="1" Style="{StaticResource WhiteKey}">
             <Rectangle.Tag>
                 <x:Static Member="model:Tonic.D"/>
             </Rectangle.Tag>
         </Rectangle>
-        <Rectangle Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.CSharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-        <Rectangle Grid.Column="1" HorizontalAlignment="Right" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.DSharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-
         <Rectangle Grid.Column="2" Style="{StaticResource WhiteKey}">
             <Rectangle.Tag>
                 <x:Static Member="model:Tonic.E"/>
             </Rectangle.Tag>
         </Rectangle>
-        <Rectangle Grid.Column="2" HorizontalAlignment="Left" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.DSharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-
         <Rectangle Grid.Column="3" Style="{StaticResource WhiteKey}">
             <Rectangle.Tag>
                 <x:Static Member="model:Tonic.F"/>
             </Rectangle.Tag>
         </Rectangle>
-        <Rectangle Grid.Column="3" HorizontalAlignment="Right" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.FSharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-
         <Rectangle Grid.Column="4" Style="{StaticResource WhiteKey}">
             <Rectangle.Tag>
                 <x:Static Member="model:Tonic.G"/>
             </Rectangle.Tag>
         </Rectangle>
-        <Rectangle Grid.Column="4" HorizontalAlignment="Left" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.FSharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-        <Rectangle Grid.Column="4" HorizontalAlignment="Right" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.GSharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-
         <Rectangle Grid.Column="5" Style="{StaticResource WhiteKey}">
             <Rectangle.Tag>
                 <x:Static Member="model:Tonic.A"/>
             </Rectangle.Tag>
         </Rectangle>
-        <Rectangle Grid.Column="5" HorizontalAlignment="Left" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.GSharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-        <Rectangle Grid.Column="5" HorizontalAlignment="Right" Style="{StaticResource BlackKey}">
-            <Rectangle.Tag>
-                <x:Static Member="model:Tonic.ASharp"/>
-            </Rectangle.Tag>
-        </Rectangle>
-
         <Rectangle Grid.Column="6" Style="{StaticResource WhiteKey}">
             <Rectangle.Tag>
                 <x:Static Member="model:Tonic.B"/>
             </Rectangle.Tag>
         </Rectangle>
-        <Rectangle Grid.Column="6" HorizontalAlignment="Left" Style="{StaticResource BlackKey}">
+
+
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BlackKey}">
+            <Rectangle.Tag>
+                <x:Static Member="model:Tonic.CSharp"/>
+            </Rectangle.Tag>
+        </Rectangle>
+        <Rectangle Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource BlackKey}">
+            <Rectangle.Tag>
+                <x:Static Member="model:Tonic.DSharp"/>
+            </Rectangle.Tag>
+        </Rectangle>
+        <Rectangle Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource BlackKey}">
+            <Rectangle.Tag>
+                <x:Static Member="model:Tonic.FSharp"/>
+            </Rectangle.Tag>
+        </Rectangle>
+        <Rectangle Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource BlackKey}">
+            <Rectangle.Tag>
+                <x:Static Member="model:Tonic.GSharp"/>
+            </Rectangle.Tag>
+        </Rectangle>
+        <Rectangle Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource BlackKey}">
             <Rectangle.Tag>
                 <x:Static Member="model:Tonic.ASharp"/>
             </Rectangle.Tag>
