@@ -25,6 +25,9 @@ namespace CloudSynth.Piano.Controls
         public static readonly DependencyProperty StopCommandProperty = DependencyProperty.Register("StopCommand",
             typeof(ICommand), typeof(PianoControl), new PropertyMetadata(OnCommandChanged));
 
+        public static readonly DependencyProperty OctaveProperty = DependencyProperty.Register("Octave", 
+            typeof(int), typeof(PianoControl), new PropertyMetadata(OnOctaveChanged));
+
         #endregion
 
         public PianoControl()
@@ -46,16 +49,31 @@ namespace CloudSynth.Piano.Controls
             set => SetValue(StopCommandProperty, value);
         }
 
+        public int Octave
+        {
+            get => (int) GetValue(OctaveProperty);
+            set => SetValue(OctaveProperty, value);
+        }
+
         #endregion
 
-        #region Method about command bindings
-
+        #region Property callback methods
+        
         public static void OnCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var p = (PianoControl)d;
-            
-            p.HookUpCommand(e.Property, (ICommand) e.OldValue, (ICommand) e.NewValue);
+            p.HookUpCommand(e.Property, (ICommand)e.OldValue, (ICommand)e.NewValue);
         }
+
+        public static void OnOctaveChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var p = (PianoControl) d;
+            p.Octave = (int)e.NewValue;
+        }
+
+        #endregion
+
+        #region Method about command bindings
 
         private void HookUpCommand(DependencyProperty property, ICommand oldCommand, ICommand newCommand)
         {
@@ -91,7 +109,7 @@ namespace CloudSynth.Piano.Controls
 
         #endregion
 
-        #region CanExecuteChanged event handlers
+        #region PropertyChanged event handlers
 
         // Should CanExecuteChanged event handlers be splitted? Idk...
         private void CanExecutePlayChanged(object sender, EventArgs e)
