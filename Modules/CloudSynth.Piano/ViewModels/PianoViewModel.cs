@@ -1,4 +1,6 @@
 ﻿using CloudSynth.Core.Interfaces;
+using CloudSynth.Core.Models;
+using Prism.Commands;
 using Prism.Regions;
 
 namespace CloudSynth.Piano.ViewModels
@@ -14,7 +16,15 @@ namespace CloudSynth.Piano.ViewModels
 
         public PianoViewModel(IRegionManager regionManager) : base(regionManager)
         {
-            Message = "Piano View";
+            
+        }
+
+        private DelegateCommand<Tonic?> _keyboardCommand;
+        public DelegateCommand<Tonic?> KeyboardCommand => _keyboardCommand ??= new DelegateCommand<Tonic?>(ExecuteKeyboardCommand);
+
+        private void ExecuteKeyboardCommand(Tonic? key)
+        {
+            // Do something
         }
     }
 }

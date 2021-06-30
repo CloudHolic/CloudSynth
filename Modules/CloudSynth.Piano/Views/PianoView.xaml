@@ -26,7 +26,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <controls:PianoControl Grid.Column="0"/>
+        <controls:PianoControl Grid.Column="0" Command="{Binding KeyboardCommand}"/>
 
         <controls:PianoControl Grid.Column="1"/>
     </Grid>

@@ -7,9 +7,6 @@
 	<ItemGroup>
 		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Models\" />
-	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="xcopy /Y &quot;$(OutDir)*$(TargetExt)&quot; &quot;$(SolutionDir)bin\&quot;" />
 	</Target>
