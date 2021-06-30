@@ -19,12 +19,28 @@ namespace CloudSynth.Piano.ViewModels
             
         }
 
-        private DelegateCommand<Tonic?> _keyboardCommand;
-        public DelegateCommand<Tonic?> KeyboardCommand => _keyboardCommand ??= new DelegateCommand<Tonic?>(ExecuteKeyboardCommand);
+        #region PlayCommand
 
-        private void ExecuteKeyboardCommand(Tonic? key)
+        private DelegateCommand<Tonic?> _playCommand;
+        public DelegateCommand<Tonic?> PlayCommand => _playCommand ??= new DelegateCommand<Tonic?>(ExecutePlayCommand);
+
+        private void ExecutePlayCommand(Tonic? key)
         {
             // Do something
         }
+
+        #endregion
+
+        #region StopCommand
+
+        private DelegateCommand<Tonic?> _stopCommand;
+        public DelegateCommand<Tonic?> StopCommand => _stopCommand ??= new DelegateCommand<Tonic?>(ExecuteStopCommand);
+
+        private void ExecuteStopCommand(Tonic? key)
+        {
+            // Do something
+        }
+
+        #endregion
     }
 }

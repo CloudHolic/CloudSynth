@@ -13,11 +13,14 @@ namespace CloudSynth.Piano.Controls
     /// </summary>
     public partial class PianoControl : UserControl
     {
-        private bool _canExecute;
-        private EventHandler _canExecuteChanged;
-        protected override bool IsEnabledCore => base.IsEnabledCore && _canExecute;
+        private bool _canExecutePlay, _canExecuteStop;
+        private EventHandler _canExecutePlayChanged, _canExecuteStopChanged;
+        protected override bool IsEnabledCore => base.IsEnabledCore && (_canExecutePlay || _canExecuteStop);
 
-        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command",
+        public static readonly DependencyProperty PlayCommandProperty = DependencyProperty.Register("PlayCommand",
+            typeof(ICommand), typeof(PianoControl), new PropertyMetadata(OnCommandChanged));
+
+        public static readonly DependencyProperty StopCommandProperty = DependencyProperty.Register("StopCommand",
             typeof(ICommand), typeof(PianoControl), new PropertyMetadata(OnCommandChanged));
 
         public PianoControl()
@@ -25,46 +28,72 @@ namespace CloudSynth.Piano.Controls
             InitializeComponent();
         }
 
-        public ICommand Command
+        public ICommand PlayCommand
         {
-            get => (ICommand) GetValue(CommandProperty);
-            set => SetValue(CommandProperty, value);
+            get => (ICommand) GetValue(PlayCommandProperty);
+            set => SetValue(PlayCommandProperty, value);
+        }
+
+        public ICommand StopCommand
+        {
+            get => (ICommand) GetValue(StopCommandProperty);
+            set => SetValue(StopCommandProperty, value);
         }
 
         public static void OnCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var p = (PianoControl)d;
-            p.HookUpCommand((ICommand) e.OldValue, (ICommand) e.NewValue);
+            
+            p.HookUpCommand(e.Property, (ICommand) e.OldValue, (ICommand) e.NewValue);
         }
 
-        private void HookUpCommand(ICommand oldCommand, ICommand newCommand)
+        private void HookUpCommand(DependencyProperty property, ICommand oldCommand, ICommand newCommand)
         {
             if (oldCommand != null)
-                RemoveCommand(oldCommand);
+                RemoveCommand(property, oldCommand);
 
-            AddCommand(newCommand);
+            AddCommand(property, newCommand);
         }
 
-        private void CanExecuteChanged(object sender, EventArgs e)
+        private void AddCommand(DependencyProperty property, ICommand command)
         {
-            if (Command != null)
-                _canExecute = Command.CanExecute(null);
+            if (property == PlayCommandProperty)
+            {
+                var handler = new EventHandler(CanExecutePlayChanged);
+                _canExecutePlayChanged = handler;
+                if (command != null)
+                    command.CanExecuteChanged += _canExecutePlayChanged;
+            }
+            else if (property == StopCommandProperty)
+            {
+                var handler = new EventHandler(CanExecuteStopChanged);
+                _canExecuteStopChanged = handler;
+                if (command != null)
+                    command.CanExecuteChanged += _canExecuteStopChanged;
+            }
+        }
+
+        private void RemoveCommand(DependencyProperty property, ICommand command)
+        {
+            EventHandler handler = property == PlayCommandProperty ? CanExecutePlayChanged : CanExecuteStopChanged;
+            command.CanExecuteChanged -= handler;
+        }
+
+        // Should CanExecuteChanged event handlers be splitted? Idk...
+        private void CanExecutePlayChanged(object sender, EventArgs e)
+        {
+            if (PlayCommand != null)
+                _canExecutePlay = PlayCommand.CanExecute(null);
 
             CoerceValue(IsEnabledProperty);
         }
 
-        private void AddCommand(ICommand command)
+        private void CanExecuteStopChanged(object sender, EventArgs e)
         {
-            var handler = new EventHandler(CanExecuteChanged);
-            _canExecuteChanged = handler;
-            if (command != null)
-                command.CanExecuteChanged += _canExecuteChanged;
-        }
+            if (StopCommand != null)
+                _canExecuteStop = StopCommand.CanExecute(null);
 
-        private void RemoveCommand(ICommand command)
-        {
-            EventHandler handler = CanExecuteChanged;
-            command.CanExecuteChanged -= handler;
+            CoerceValue(IsEnabledProperty);
         }
 
         #region White key event handlers
@@ -73,14 +102,14 @@ namespace CloudSynth.Piano.Controls
         {
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.Yellow);
-            Command.Execute((Tonic)key.Tag);
+            PlayCommand?.Execute((Tonic)key.Tag);
         }
 
         private void OnWhiteKeyMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.Ivory);
-            Command.Execute((Tonic)key.Tag);
+            StopCommand?.Execute((Tonic)key.Tag);
         }
 
         private void OnWhiteKeyMouseEnter(object sender, MouseEventArgs e)
@@ -89,7 +118,7 @@ namespace CloudSynth.Piano.Controls
             {
                 var key = (Rectangle) sender;
                 key.Fill = new SolidColorBrush(Colors.Yellow);
-                Command.Execute((Tonic) key.Tag);
+                PlayCommand?.Execute((Tonic) key.Tag);
             }
         }
 
@@ -98,7 +127,7 @@ namespace CloudSynth.Piano.Controls
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.Ivory);
             if(e.LeftButton == MouseButtonState.Pressed)
-                Command.Execute((Tonic)key.Tag);
+                StopCommand?.Execute((Tonic)key.Tag);
         }
 
         #endregion
@@ -109,24 +138,32 @@ namespace CloudSynth.Piano.Controls
         {
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.DarkGray);
-            Command.Execute((Tonic)key.Tag);
+            PlayCommand?.Execute((Tonic)key.Tag);
         }
 
         private void OnBlackKeyMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.Black);
-            Command.Execute((Tonic)key.Tag);
+            StopCommand?.Execute((Tonic)key.Tag);
         }
 
         private void OnBlackKeyMouseEnter(object sender, MouseEventArgs e)
         {
-
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                var key = (Rectangle)sender;
+                key.Fill = new SolidColorBrush(Colors.DarkGray);
+                PlayCommand?.Execute((Tonic)key.Tag);
+            }
         }
 
         private void OnBlackKeyMouseLeave(object sender, MouseEventArgs e)
         {
-
+            var key = (Rectangle)sender;
+            key.Fill = new SolidColorBrush(Colors.Black);
+            if (e.LeftButton == MouseButtonState.Pressed)
+                StopCommand?.Execute((Tonic)key.Tag);
         }
 
         #endregion
