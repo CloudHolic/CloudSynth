@@ -130,6 +130,16 @@ namespace CloudSynth.Piano.Controls
 
         #endregion
 
+        #region OnSizeChanged event handler
+
+        private void PianoControl_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (!(FindResource("BlackKey") is Style blackKeyStyle))
+                return;
+        }
+
+        #endregion
+
         #region White key event handlers
 
         private void OnWhiteKeyMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

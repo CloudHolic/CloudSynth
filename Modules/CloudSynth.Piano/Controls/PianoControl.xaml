@@ -11,7 +11,8 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{material:MaterialDesignFont}"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             SizeChanged="PianoControl_OnSizeChanged">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -36,7 +37,7 @@
                 <Setter Property="Fill" Value="Black"/>
                 <Setter Property="VerticalAlignment" Value="Top"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
-                <Setter Property="Width" Value="40"/>
+                <Setter Property="Width" Value="45"/>
                 <Setter Property="Height" Value="120"/>
 
                 <EventSetter Event="MouseLeftButtonDown" Handler="OnBlackKeyMouseLeftButtonDown"/>

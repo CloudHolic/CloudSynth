@@ -10,7 +10,7 @@
                        Background="{DynamicResource MaterialDesignPaper}"
                        FontFamily="{material:MaterialDesignFont}"
                        prism:ViewModelLocator.AutoWireViewModel="True"
-                       Title="{Binding Title}" Height="600" Width="900" ResizeMode="NoResize"
+                       Title="{Binding Title}" Height="600" Width="900"
                        Icon="../Assets/Icon.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
