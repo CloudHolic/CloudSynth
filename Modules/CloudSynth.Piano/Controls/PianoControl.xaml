@@ -6,6 +6,7 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:model="clr-namespace:CloudSynth.Core.Models;assembly=CloudSynth.Core"
+             x:ClassModifier="internal"
              mc:Ignorable="d" d:DesignHeight="200" d:DesignWidth="450"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"

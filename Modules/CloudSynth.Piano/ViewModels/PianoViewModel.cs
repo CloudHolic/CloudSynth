@@ -5,26 +5,30 @@ using Prism.Regions;
 
 namespace CloudSynth.Piano.ViewModels
 {
-    public class PianoViewModel : ViewModelBase
+    internal class PianoViewModel : ViewModelBase
     {
-        private string _message;
-        public string Message
+        #region Properties
+
+        private int _octave;
+        public int Octave
         {
-            get => _message;
-            set => SetProperty(ref _message, value);
+            get => _octave;
+            set => SetProperty(ref _octave, value);
         }
+
+        #endregion
 
         public PianoViewModel(IRegionManager regionManager) : base(regionManager)
         {
-            
+            Octave = 1;
         }
 
         #region PlayCommand
 
-        private DelegateCommand<Tonic?> _playCommand;
-        public DelegateCommand<Tonic?> PlayCommand => _playCommand ??= new DelegateCommand<Tonic?>(ExecutePlayCommand);
+        private DelegateCommand<PianoCommandParameter> _playCommand;
+        public DelegateCommand<PianoCommandParameter> PlayCommand => _playCommand ??= new DelegateCommand<PianoCommandParameter>(ExecutePlayCommand);
 
-        private void ExecutePlayCommand(Tonic? key)
+        private void ExecutePlayCommand(PianoCommandParameter parameter)
         {
             // Do something
         }
@@ -33,10 +37,10 @@ namespace CloudSynth.Piano.ViewModels
 
         #region StopCommand
 
-        private DelegateCommand<Tonic?> _stopCommand;
-        public DelegateCommand<Tonic?> StopCommand => _stopCommand ??= new DelegateCommand<Tonic?>(ExecuteStopCommand);
+        private DelegateCommand<PianoCommandParameter> _stopCommand;
+        public DelegateCommand<PianoCommandParameter> StopCommand => _stopCommand ??= new DelegateCommand<PianoCommandParameter>(ExecuteStopCommand);
 
-        private void ExecuteStopCommand(Tonic? key)
+        private void ExecuteStopCommand(PianoCommandParameter key)
         {
             // Do something
         }

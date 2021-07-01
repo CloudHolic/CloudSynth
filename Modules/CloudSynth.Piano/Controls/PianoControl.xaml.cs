@@ -11,7 +11,7 @@ namespace CloudSynth.Piano.Controls
     /// <summary>
     /// PianoControl.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class PianoControl : UserControl
+    internal partial class PianoControl : UserControl
     {
         private bool _canExecutePlay, _canExecuteStop;
         private EventHandler _canExecutePlayChanged, _canExecuteStopChanged;
@@ -136,14 +136,14 @@ namespace CloudSynth.Piano.Controls
         {
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.Yellow);
-            PlayCommand?.Execute((Tonic)key.Tag);
+            PlayCommand?.Execute(new PianoCommandParameter((Tonic) key.Tag, Octave));
         }
 
         private void OnWhiteKeyMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.Ivory);
-            StopCommand?.Execute((Tonic)key.Tag);
+            StopCommand?.Execute(new PianoCommandParameter((Tonic)key.Tag, Octave));
         }
 
         private void OnWhiteKeyMouseEnter(object sender, MouseEventArgs e)
@@ -152,7 +152,7 @@ namespace CloudSynth.Piano.Controls
             {
                 var key = (Rectangle) sender;
                 key.Fill = new SolidColorBrush(Colors.Yellow);
-                PlayCommand?.Execute((Tonic) key.Tag);
+                PlayCommand?.Execute(new PianoCommandParameter((Tonic)key.Tag, Octave));
             }
         }
 
@@ -161,7 +161,7 @@ namespace CloudSynth.Piano.Controls
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.Ivory);
             if(e.LeftButton == MouseButtonState.Pressed)
-                StopCommand?.Execute((Tonic)key.Tag);
+                StopCommand?.Execute(new PianoCommandParameter((Tonic)key.Tag, Octave));
         }
 
         #endregion
@@ -172,14 +172,14 @@ namespace CloudSynth.Piano.Controls
         {
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.DarkGray);
-            PlayCommand?.Execute((Tonic)key.Tag);
+            PlayCommand?.Execute(new PianoCommandParameter((Tonic)key.Tag, Octave));
         }
 
         private void OnBlackKeyMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var key = (Rectangle) sender;
             key.Fill = new SolidColorBrush(Colors.Black);
-            StopCommand?.Execute((Tonic)key.Tag);
+            StopCommand?.Execute(new PianoCommandParameter((Tonic)key.Tag, Octave));
         }
 
         private void OnBlackKeyMouseEnter(object sender, MouseEventArgs e)
@@ -188,7 +188,7 @@ namespace CloudSynth.Piano.Controls
             {
                 var key = (Rectangle)sender;
                 key.Fill = new SolidColorBrush(Colors.DarkGray);
-                PlayCommand?.Execute((Tonic)key.Tag);
+                PlayCommand?.Execute(new PianoCommandParameter((Tonic)key.Tag, Octave));
             }
         }
 
@@ -197,7 +197,7 @@ namespace CloudSynth.Piano.Controls
             var key = (Rectangle)sender;
             key.Fill = new SolidColorBrush(Colors.Black);
             if (e.LeftButton == MouseButtonState.Pressed)
-                StopCommand?.Execute((Tonic)key.Tag);
+                StopCommand?.Execute(new PianoCommandParameter((Tonic)key.Tag, Octave));
         }
 
         #endregion
