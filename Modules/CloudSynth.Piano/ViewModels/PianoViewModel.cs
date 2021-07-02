@@ -23,6 +23,21 @@ namespace CloudSynth.Piano.ViewModels
             Octave = 1;
         }
 
+        #region OctaveCommand
+
+        private DelegateCommand<string> _octaveCommand;
+        public DelegateCommand<string> OctaveCommand => _octaveCommand ??= new DelegateCommand<string>(ExecuteOctaveCommand);
+
+        private void ExecuteOctaveCommand(string parameter)
+        {
+            if (parameter == "+")
+                Octave++;
+            else if(parameter == "-")
+                Octave--;
+        }
+
+        #endregion
+        
         #region PlayCommand
 
         private DelegateCommand<PianoCommandParameter> _playCommand;

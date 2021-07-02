@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using CloudSynth.Core.Models;
+using CloudSynth.Core.Utils;
 
 namespace CloudSynth.Piano.Controls
 {
@@ -15,6 +18,8 @@ namespace CloudSynth.Piano.Controls
     {
         private bool _canExecutePlay, _canExecuteStop;
         private EventHandler _canExecutePlayChanged, _canExecuteStopChanged;
+        private static readonly Tonic[] BlackKeys = { Tonic.CSharp, Tonic.DSharp, Tonic.FSharp, Tonic.GSharp, Tonic.ASharp };
+
         protected override bool IsEnabledCore => base.IsEnabledCore && (_canExecutePlay || _canExecuteStop);
 
         #region Dependency properties
@@ -25,8 +30,12 @@ namespace CloudSynth.Piano.Controls
         public static readonly DependencyProperty StopCommandProperty = DependencyProperty.Register("StopCommand",
             typeof(ICommand), typeof(PianoControl), new PropertyMetadata(OnCommandChanged));
 
-        public static readonly DependencyProperty OctaveProperty = DependencyProperty.Register("Octave", 
-            typeof(int), typeof(PianoControl), new PropertyMetadata(OnOctaveChanged));
+        public static readonly DependencyProperty OctaveProperty = DependencyProperty.Register("Octave",
+            typeof(int), typeof(PianoControl), new FrameworkPropertyMetadata(OnOctaveChanged)
+            {
+                BindsTwoWayByDefault = true,
+                DefaultUpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+            });
 
         #endregion
 
@@ -134,8 +143,14 @@ namespace CloudSynth.Piano.Controls
 
         private void PianoControl_OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (!(FindResource("BlackKey") is Style blackKeyStyle))
-                return;
+            foreach (var child in UiHelper.FindVisualChildren<Rectangle>(this))
+            {
+                if (!BlackKeys.Contains((Tonic) child.Tag))
+                    continue;
+
+                child.Height = e.NewSize.Height * 0.6;
+                child.Width = e.NewSize.Width * 0.1;
+            }
         }
 
         #endregion

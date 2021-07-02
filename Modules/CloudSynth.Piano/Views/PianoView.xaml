@@ -14,7 +14,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converters:MathConverter x:Key="MathConverter"/>
+            <converters:AddConverter x:Key="AddConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <material:BundledTheme BaseTheme="Dark" PrimaryColor="Grey" SecondaryColor="Blue"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
@@ -24,13 +24,24 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <controls:PianoControl Grid.Column="0" Octave="{Binding Octave}"
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Margin="5,0" Content="Oct +" Command="{Binding OctaveCommand}" CommandParameter="+" Background="White"/>
+            <Button Grid.Row="1" Margin="5,0" Content="Oct -" Command="{Binding OctaveCommand}" CommandParameter="-" Background="White"/>
+
+        </Grid>
+        <controls:PianoControl Grid.Column="1" Octave="{Binding Octave}"
                                PlayCommand="{Binding PlayCommand}" StopCommand="{Binding StopCommand}"/>
-        <controls:PianoControl Grid.Column="1" Octave="{Binding Octave, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE+1}"
+        <controls:PianoControl Grid.Column="2" Octave="{Binding Octave, Converter={StaticResource AddConverter}, ConverterParameter=1}"
                                PlayCommand="{Binding PlayCommand}" StopCommand="{Binding StopCommand}"/>
     </Grid>
 </UserControl>
