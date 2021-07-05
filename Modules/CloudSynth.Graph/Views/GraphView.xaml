@@ -21,27 +21,34 @@
     </UserControl.Resources>
 
     <Grid>
-        <lvc:CartesianChart Background="Transparent">
-            <lvc:CartesianChart.Series>
-                <lvc:LineSeries StrokeThickness="3" Stroke="White" Values="{Binding Values1}" Fill="Transparent" LineSmoothness="1"
-                                PointGeometrySize="0"/>
-            </lvc:CartesianChart.Series>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="White" BorderThickness="3" Margin="3">
+            <lvc:CartesianChart Background="Transparent" DisableAnimations="True" Hoverable="False"
+                                Margin="-5,0,0,0" ToolTip="{x:Null}" DataTooltip="{x:Null}">
+                <lvc:CartesianChart.Series>
+                    <lvc:LineSeries StrokeThickness="3" Stroke="White" Values="{Binding SineWaves}" Fill="Transparent" LineSmoothness="1"
+                                    PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"/>
+                </lvc:CartesianChart.Series>
 
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis ShowLabels="False" Visibility="Collapsed">
-                    <lvc:Axis.Separator>
-                        <lvc:Separator IsEnabled="False"/>
-                    </lvc:Axis.Separator>
-                </lvc:Axis>
-            </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis MinValue="-1" MaxValue="1" DisableAnimations="True" Foreground="Transparent" IsMerged="True">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator IsEnabled="True" Step="1" Stroke="White" StrokeThickness="1"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisX>
 
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis ShowLabels="False" Visibility="Collapsed">
-                    <lvc:Axis.Separator>
-                        <lvc:Separator IsEnabled="False"/>
-                    </lvc:Axis.Separator>
-                </lvc:Axis>
-            </lvc:CartesianChart.AxisY>
-        </lvc:CartesianChart>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis MinValue="-1" MaxValue="1" DisableAnimations="True" Foreground="Transparent" IsMerged="True">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator IsEnabled="True" Step="1" Stroke="White" StrokeThickness="1"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+        </Border>
     </Grid>
 </UserControl>

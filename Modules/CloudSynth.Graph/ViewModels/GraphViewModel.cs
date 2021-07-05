@@ -1,21 +1,26 @@
-﻿using CloudSynth.Core.Interfaces;
+﻿using System;
+using CloudSynth.Core.Interfaces;
 using LiveCharts;
+using LiveCharts.Defaults;
 using Prism.Regions;
 
 namespace CloudSynth.Graph.ViewModels
 {
     public class GraphViewModel : ViewModelBase
     {
-        private ChartValues<double> _values1;
-        public ChartValues<double> Values1
+        private ChartValues<ObservablePoint> _sineWaves;
+        private const double AxisGap = 0.01; 
+        public ChartValues<ObservablePoint> SineWaves
         {
-            get => _values1;
-            set => SetProperty(ref _values1, value);
+            get => _sineWaves;
+            set => SetProperty(ref _sineWaves, value);
         }
 
         public GraphViewModel(IRegionManager regionManager) : base(regionManager)
         {
-            Values1 = new ChartValues<double> {1, 2, 3, 4, 5};
+            SineWaves = new ChartValues<ObservablePoint>();
+            for (double i = -1; i < 1 + AxisGap; i += AxisGap)
+                SineWaves.Add(new ObservablePoint(i, Math.Sin(i * Math.PI)));
         }
     }
 }
