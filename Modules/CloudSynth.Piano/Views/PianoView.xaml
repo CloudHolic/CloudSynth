@@ -14,11 +14,31 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converters:AddConverter x:Key="AddConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <material:BundledTheme BaseTheme="Dark" PrimaryColor="Grey" SecondaryColor="Blue"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <converters:AddConverter x:Key="AddConverter"/>
+
+            <Style x:Key="OctButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Margin" Value="5,0"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="material:RippleAssist.IsDisabled" Value="True"/>
+
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="Gray"/>
+                    </Trigger>
+
+                    <Trigger Property="IsPressed" Value="False">
+                        <Setter Property="Background" Value="White"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -35,8 +55,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Margin="5,0" Content="Oct +" Command="{Binding OctaveCommand}" CommandParameter="+" Background="White"/>
-            <Button Grid.Row="1" Margin="5,0" Content="Oct -" Command="{Binding OctaveCommand}" CommandParameter="-" Background="White"/>
+            <Button Grid.Row="0" Style="{StaticResource OctButtonStyle}" Content="Oct +" Command="{Binding OctaveCommand}" CommandParameter="+"/>
+            <Button Grid.Row="1" Style="{StaticResource OctButtonStyle}" Content="Oct -" Command="{Binding OctaveCommand}" CommandParameter="-"/>
 
         </Grid>
         <controls:PianoControl Grid.Column="1" Octave="{Binding Octave}"
