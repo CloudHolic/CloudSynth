@@ -1,6 +1,8 @@
-﻿namespace CloudSynth.Core.Models
+﻿using CloudSynth.Core.Models;
+
+namespace CloudSynth.Piano.Controls
 {
-    public record PianoCommandParameter
+    internal record PianoCommandParameter
     {
         public Tonic Key { get; init; }
 

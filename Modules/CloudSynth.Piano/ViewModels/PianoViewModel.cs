@@ -1,5 +1,5 @@
 ﻿using CloudSynth.Core.Interfaces;
-using CloudSynth.Core.Models;
+using CloudSynth.Piano.Controls;
 using Prism.Commands;
 using Prism.Regions;
 

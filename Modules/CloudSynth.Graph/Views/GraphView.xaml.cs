@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using CloudSynth.Graph.Models;
 
 namespace CloudSynth.Graph.Views
 {
@@ -10,6 +11,12 @@ namespace CloudSynth.Graph.Views
         public GraphView()
         {
             InitializeComponent();
+
+            SineWave.Values = GraphSeries.SineWaves;
+            SawWave.Values = GraphSeries.SawWaves;
+            ReverseSawWave.Values = GraphSeries.ReverseSawWaves;
+            SquareWave.Values = GraphSeries.SquareWaves;
+            TriangleWave.Values = GraphSeries.TriangleWaves;
         }
     }
 }
