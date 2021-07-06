@@ -1,6 +1,4 @@
-﻿using System;
-using CloudSynth.Core.Interfaces;
-using LiveCharts;
+﻿using CloudSynth.Core.Interfaces;
 using Prism.Regions;
 
 namespace CloudSynth.Graph.ViewModels
