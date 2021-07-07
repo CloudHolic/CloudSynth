@@ -6,12 +6,36 @@
 		<AssemblyName>CloudSynth.Graph</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Assets\ReverseSawWave.png" />
+	  <None Remove="Assets\SawWave.png" />
+	  <None Remove="Assets\SineWave.png" />
+	  <None Remove="Assets\SquareWave.png" />
+	  <None Remove="Assets\TriangleWave.png" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
 		<PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
 		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\CloudSynth.Core\CloudSynth.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Assets\ReverseSawWave.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Assets\SawWave.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Assets\SineWave.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Assets\SquareWave.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Assets\TriangleWave.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="xcopy /Y &quot;$(OutDir)*$(TargetExt)&quot; &quot;$(SolutionDir)bin\&quot;" />

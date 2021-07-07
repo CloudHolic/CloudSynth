@@ -19,7 +19,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="WaveFuncRadio" TargetType="{x:Type RadioButton}">
-                <Setter Property="Background" Value="Black"/>
+                <Setter Property="Background" Value="White"/>
                 <Setter Property="Margin" Value="10,0"/>
                 <Setter Property="BorderThickness" Value="2"/>
                 <Setter Property="Width" Value="70"/>
@@ -86,11 +86,11 @@
         </lvc:CartesianChart>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <RadioButton Style="{StaticResource WaveFuncRadio}" Content=" "/>
-            <RadioButton Style="{StaticResource WaveFuncRadio}" Content=" "/>
-            <RadioButton Style="{StaticResource WaveFuncRadio}" Content=" "/>
-            <RadioButton Style="{StaticResource WaveFuncRadio}" Content=" "/>
-            <RadioButton Style="{StaticResource WaveFuncRadio}" Content=" "/>
+            <RadioButton Style="{StaticResource WaveFuncRadio}" Content="../Assets/SineWave.png"/>
+            <RadioButton Style="{StaticResource WaveFuncRadio}" Content="../Assets/SawWave.png"/>
+            <RadioButton Style="{StaticResource WaveFuncRadio}" Content="../Assets/ReverseSawWave.png"/>
+            <RadioButton Style="{StaticResource WaveFuncRadio}" Content="../Assets/TriangleWave.png"/>
+            <RadioButton Style="{StaticResource WaveFuncRadio}" Content="../Assets/SquareWave.png"/>
         </StackPanel>
     </Grid>
 </UserControl>
