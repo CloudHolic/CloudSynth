@@ -20,6 +20,10 @@
             </ResourceDictionary.MergedDictionaries>
 
             <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+            <converters:CombiningConverter x:Key="EnumToVisibilityConverter">
+                <converters:EnumToBooleanConverter/>
+                <BooleanToVisibilityConverter/>
+            </converters:CombiningConverter>
 
             <Style x:Key="WaveFuncRadio" TargetType="{x:Type RadioButton}">
                 <Setter Property="Background" Value="White"/>
@@ -61,19 +65,19 @@
             <lvc:CartesianChart.Series>
                 <lvc:LineSeries x:Name="SineWave" StrokeThickness="3" Stroke="Red" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
-                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Sine}"/>
+                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Sine}"/>
                 <lvc:LineSeries x:Name="SawWave" StrokeThickness="3" Stroke="Blue" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
-                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Saw}"/>
+                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Saw}"/>
                 <lvc:LineSeries x:Name="ReverseSawWave" StrokeThickness="3" Stroke="White" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
-                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=ReverseSaw}"/>
+                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=ReverseSaw}"/>
                 <lvc:LineSeries x:Name="SquareWave" StrokeThickness="3" Stroke="Yellow" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
-                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Square}"/>
+                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Square}"/>
                 <lvc:LineSeries x:Name="TriangleWave" StrokeThickness="3" Stroke="Green" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
-                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Triangle}"/>
+                                Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Triangle}"/>
             </lvc:CartesianChart.Series>
 
             <lvc:CartesianChart.AxisX>
