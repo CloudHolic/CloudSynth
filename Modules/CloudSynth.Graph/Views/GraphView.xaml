@@ -63,19 +63,19 @@
         <lvc:CartesianChart Grid.Row="0" Background="Transparent" DisableAnimations="True" Hoverable="False"
                             Margin="0,5,5,5" ToolTip="{x:Null}" DataTooltip="{x:Null}" Panel.ZIndex="2">
             <lvc:CartesianChart.Series>
-                <lvc:LineSeries x:Name="SineWave" StrokeThickness="3" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
+                <lvc:LineSeries x:Name="SineWave" StrokeThickness="5" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
                                 Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Sine}"/>
-                <lvc:LineSeries x:Name="SawWave" StrokeThickness="3" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
+                <lvc:LineSeries x:Name="SawWave" StrokeThickness="5" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
                                 Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Saw}"/>
-                <lvc:LineSeries x:Name="ReverseSawWave" StrokeThickness="3" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
+                <lvc:LineSeries x:Name="ReverseSawWave" StrokeThickness="5" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
                                 Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=ReverseSaw}"/>
-                <lvc:LineSeries x:Name="SquareWave" StrokeThickness="3" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
+                <lvc:LineSeries x:Name="SquareWave" StrokeThickness="5" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
                                 Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Square}"/>
-                <lvc:LineSeries x:Name="TriangleWave" StrokeThickness="3" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
+                <lvc:LineSeries x:Name="TriangleWave" StrokeThickness="5" Stroke="MediumPurple" Fill="Transparent" LineSmoothness="1"
                                 PointGeometry="{x:Null}" PointGeometrySize="0" DataLabels="False" HorizontalAlignment="Stretch"
                                 Visibility="{Binding CurrentSeries, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Triangle}"/>
             </lvc:CartesianChart.Series>
